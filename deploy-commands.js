@@ -11,23 +11,26 @@ const { clientId, token } = require("./config.json");
 
 //
 // Deceleration
-//
 
-const commandFiles = fs
-  .readdirSync("./commands")
-  .filter((file) => file.endsWith(".js"));
 const commands = [];
+
+const commandFolders = fs.readdirSync("./commands");
+
+for (const folder of commandFolders) {
+  const commandFiles = fs
+    .readdirSync(`./commands/${folder}/`)
+    .filter((file) => file.endsWith(".js"));
+  for (const file of commandFiles) {
+    const command = require(`./commands/${folder}/${file}`);
+    commands.push(command.data.toJSON());
+  }
+}
 
 // ENDL 12
 
 //
 // Start
 //
-
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
-  commands.push(command.data.toJSON());
-}
 
 const rest = new REST({ version: "9" }).setToken(token);
 

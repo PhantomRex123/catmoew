@@ -5,8 +5,6 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.commands = new Collection();
 
-// const modules = ["api", "info", "misc", "moderation", "users"];
-
 const commandFolders = fs.readdirSync("./commands");
 
 for (const folder of commandFolders) {
