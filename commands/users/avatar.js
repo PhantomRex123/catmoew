@@ -1,22 +1,31 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
+const { MessageEmbed } = require("discord.js");
+const { embedCreate } = require("../../helpers/embedCreate");
 
 module.exports = {
-  data: new SlashCommandBuilder()
-    .setName("avatar")
-    .setDescription(
-      "Get the avatar URL of the selected user, or your own avatar."
-    )
-    .addUserOption((option) =>
-      option.setName("target").setDescription("The user's avatar to show")
-    ),
+  name: "test",
+  desc: "A test command",
   async execute(interaction) {
-    const user = interaction.options.getUser("target");
-    if (user)
-      {return interaction.reply(
-        `${user.username}'s avatar: ${user.displayAvatarURL({ dynamic: true })}`
-      );}
-    return interaction.reply(
-      `Your avatar: ${interaction.user.displayAvatarURL({ dynamic: true })}`
-    );
+    // const user = interaction.options.getUser("target");
+    // if (user) {
+    //   return interaction.reply(
+    //     embedCreate(
+    //       "#0099ff",
+    //       `${user.username}'s avatar: ${user.displayAvatarURL({
+    //         dynamic: true,
+    //       })}`,
+    //       "testing"
+    //     )
+    //   );
+    // }
+    // return interaction.reply(
+    //   // `Your avatar: ${interaction.user.displayAvatarURL({ dynamic: true })}`
+    //   embedCreate(
+    //     "#0099ff",
+    //     `Your avatar: ${interaction.user.displayAvatarURL({ dynamic: true })}`,
+    //     "testing"
+    //   )
+    // );
+    const exampleEmbed = embedCreate;
+    return interaction.reply({ embeds: [exampleEmbed] });
   },
 };

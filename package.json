@@ -4,18 +4,23 @@
   "description": "A simple discord bot, for the The Coding Den",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "doc": "npx jsdoc -c jsdoc.json",
+    "run": "node .",
+    "update": "node deploy-command.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@discordjs/builders": "^0.8.2",
     "@discordjs/rest": "^0.1.0-canary.0",
+    "browser-sync": "^2.27.7",
     "discord-api-types": "^0.20.2",
     "discord.js": "^13.3.1"
   },
   "devDependencies": {
-    "eslint": "^8.3.0"
+    "eslint": "^8.3.0",
+    "jsdoc": "^3.6.7",
+    "jshint": "^2.13.1"
   },
   "homepage": "https://github.com/PhantomRex123/catmoew"
 }
